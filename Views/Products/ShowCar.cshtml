@@ -1,0 +1,76 @@
+﻿@using CarShowRoom.DbModel
+@model CarShowRoom.DbModel.Car
+
+@{
+    ViewBag.Title = "Модель";
+    Layout = "_Layout";
+}
+
+<h2>Модель @Model.ModelName</h2>
+<div class="form-group">
+        <label class="control-label">Производитель</label>
+        <label class="control-label">@Model.Manufacture.Name</label>
+    </div>
+<div class="form-group">
+    <label class="control-label">Размеры</label>
+    <div class="form-group">
+            <label  class="control-label">Высота</label>
+            <label class="control-label">@Model.Size.Height</label>
+    </div>
+        <div class="form-group">
+            <label  class="control-label">Количество колес</label>
+            <label class="control-label">@Model.Size.WheelBase</label>
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Количество дверей</label>
+            <label class="control-label">@Model.Size.Doors</label>
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Максимум пассажиров</label>
+            <label class="control-label">@Model.Size.Passengers</label>
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Объем багажника</label>
+            <label class="control-label">@Model.Size.TrunkVolume</label>
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Масса</label>
+            <label class="control-label">@Model.Size.Weight</label>
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Ширина</label>
+            <label class="control-label">@Model.Size.Width</label>
+        </div>
+</div>
+<div class="form-group">
+    <label class="control-label">Цвета:</label>
+    <table class="table">
+        <tr>
+            <th>Название цвета</th>
+            <th>Hex</th>
+        </tr>
+        @foreach (Color color in Model.Colors)
+        {
+            <td>@color.Name</td>
+            <td>@color.HexString</td>
+        }
+    </table>
+</div>
+<div class="form-group">
+    <label class="control-label">Комплектации:</label>
+    <table class="table">
+        <tr>
+            <th>Название</th>
+        </tr>
+        @foreach (Complectation complectation in Model.Complectations)
+        {
+            <td><a asp-controller="Products" asp-action="ShowComplectation" asp-route-complectationId="@complectation.Id">@complectation.Name</a></td>
+        }
+    </table>
+</div>
+@if (ViewBag.RoleId == 3)
+{
+    <div class="form-group">
+        <a asp-controller="Seller" asp-action="CreateContract" asp-route-carId="@Model.Id">Оформить договор</a>
+    </div>
+}

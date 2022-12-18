@@ -1,0 +1,68 @@
+﻿@using CarShowRoom.DbModel
+@model ComplectationModel
+
+@{
+    ViewBag.Title = "Комплектация";
+    Layout = "_Layout";
+}
+
+<h2>Добавить копмлектацию</h2>
+<form asp-action="AddComplectation" asp-controller="Products" method="post" asp-antiforgery="true">
+     <div class="form-group">
+            <label  class="control-label">Название комплектации</label>
+            <input type="text" name="Name" class="form-control" />
+            <span asp-validation-for="Name"></span>
+        </div>
+    <div class="form-group">
+        <label class="control-label">Название двигателя</label>
+        <input type="text" name="EngineName" class="form-control"/>
+        <span asp-validation-for="EngineName"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Мощность двигателя</label>
+        <input type="text" name="EngineForce" class="form-control"/>
+        <span asp-validation-for="EngineForce"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Привод:</label>
+        <div>
+            <table class="table">
+                <tr>
+
+                    <th> <label>Передний</label></th>
+                    <th> <input type="radio" name="DriveType" value="0"/></th>
+                </tr>
+                <tr>
+
+                    <th> <label>Задний</label></th>
+                    <th> <input type="radio" name="DriveType" value="1"/></th>
+                </tr>
+                <tr>
+
+                    <th> <label>Полный</label></th>
+                    <th> <input type="radio" name="DriveType" value="2"/></th>
+                </tr>
+            </table>
+        </div>
+        <span asp-validation-for="DriveType"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Тип топлива</label>
+        @Html.DropDownList("FuelTypeId", ViewBag.Fuel as SelectList)
+        <span asp-validation-for="FuelTypeId"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Модель</label>
+        @Html.DropDownList("CarId", ViewBag.Cars as SelectList)
+        <span asp-validation-for="CarId"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Время поставки (дней)</label>
+        <input type="text" name="DeliveryDate" class="form-control" />
+        <span asp-validation-for="DeliveryDate"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default"/>
+    </div>
+</form>

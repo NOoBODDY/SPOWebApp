@@ -1,0 +1,16 @@
+﻿@model CarShowRoom.DbModel.Manufacture
+
+@{
+    ViewBag.Title = "Производитель";
+    Layout = "_Layout";
+}
+
+<h2>Производитель @Model.Name</h2>
+<div class="form-group">
+    <label  class="control-label">Имя</label>
+    <label class="control-label">@Model.Name</label>
+</div>
+<div class="form-group">
+    <label  class="control-label">Страна</label>
+    <label class="control-label">@Model.Country</label>
+</div>

@@ -1,0 +1,27 @@
+﻿@model CarShowRoom.DbModel.Contract
+
+@{
+    ViewBag.Title = "Договор";
+    Layout = "_Layout";
+}
+
+<h2>Договор №@Model.Id </h2>
+<div class="form-group">
+        <label class="control-label">Модель</label>
+    <label class="control-label"><a asp-controller="Products" asp-action="ShowCar" asp-route-carId="@Model.Complectation.CarId">@Model.Complectation.Car.ModelName</a></label>
+    </div>
+<div class="form-group">
+    <label class="control-label">ФИО покупателя</label>
+    <label class="control-label">@Model.Buyer</label>
+</div>
+<div class="form-group">
+    <label class="control-label">Продавец</label>
+    <label class="control-label">@Model.Seller.Login</label>
+</div>
+<div class="form-group">
+    <label class="control-label">Комплектация</label>
+    <label class="control-label"><a asp-controller="Products" asp-action="ShowComplectation" asp-route-complectationId="@Model.ComplectationId">@Model.Complectation.Name</a></label>
+</div>
+<div class="form-group">
+    <a class="btn btn-default" asp-controller = "Seller" asp-action="OrderTheModel" asp-route-contractId = "@Model.Id"> Сделать заказ </a>
+</div>

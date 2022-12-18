@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Добавить тип Топлива";
+    Layout = "_Layout";
+}
+
+<h2>Добавить тип Топлива</h2>
+<form asp-action="AddFuelType" asp-controller="Products" method="post" asp-antiforgery="true">
+    <div class="form-group">
+        <label  class="control-label">Название типа</label>
+        <input type="text" name="fuelName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default" />
+    </div>
+</form>

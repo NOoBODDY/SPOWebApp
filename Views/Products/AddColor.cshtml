@@ -1,0 +1,23 @@
+﻿@model CarShowRoom.Models.ColorModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Добавить цвет</h2>
+<form asp-action="AddColor" asp-controller="Products" method="post" asp-antiforgery="true">
+    <div class="form-group">
+        <label  class="control-label">Имя</label>
+        <input type="text" name="Name" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Hex-строка</label>
+        <input type="text" name="HexString" class="form-control" asp-for="HexString" />
+        <span asp-validation-for="HexString"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default" />
+    </div>
+    
+</form>

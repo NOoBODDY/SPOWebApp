@@ -1,0 +1,17 @@
+﻿@using CarShowRoom.DbModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Автосалон</h1>
+    <h2>Все модели</h2>
+    <table class="table">
+        @foreach (Car car in ViewBag.Cars)
+        {
+            <tr>
+                <td><a asp-controller="Products" asp-action="ShowCar" asp-route-carId="@car.Id">@car.ModelName</a></td>
+            </tr>
+        }
+    </table>
+</div>

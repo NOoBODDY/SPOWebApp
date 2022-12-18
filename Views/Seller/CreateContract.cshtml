@@ -1,0 +1,29 @@
+﻿@model ContractModel
+
+@{
+    ViewBag.Title = "Новый договор";
+    Layout = "_Layout";
+}
+
+<h2>Новый договор</h2>
+<form asp-action="CreateContract" asp-controller="Seller" method="post" asp-antiforgery="true">
+    <div class="form-group">
+            <label class="control-label">Модель</label>
+            <label class="control-label">@ViewBag.CarModel</label>
+        </div>
+    <div class="form-group">
+        <label class="control-label">ФИО покупателя</label>
+        <input type="text" name="Buyer" class="form-control"/>
+        <span asp-validation-for="Buyer"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Комплектация</label>
+        @Html.DropDownList("ComplectationId", ViewBag.Complectations as SelectList)
+        <span asp-validation-for="ComplectationId"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default"/>
+    </div>
+    <input type="hidden" name="CarId" value="@ViewBag.CarId" />
+    <input type="hidden" name="SellerId" value="@ViewBag.SellerId" />
+</form>

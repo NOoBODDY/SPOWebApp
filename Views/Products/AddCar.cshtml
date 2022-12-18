@@ -1,0 +1,73 @@
+﻿@using CarShowRoom.DbModel
+@model CarShowRoom.Models.CarWithSize
+@{
+    Layout = "_Layout";
+}
+<h2>Добавить модель</h2>
+<form asp-action="AddCar" asp-controller="Products" method="post" asp-antiforgery="true">
+    <div class="form-group">
+        <label  class="control-label">Имя</label>
+        <input type="text" name="ModelName" class="form-control" />
+        <span asp-validation-for="ModelName"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Производитель</label>
+        @Html.DropDownList("ManufactureId", ViewBag.Manufactures as SelectList)
+        <span asp-validation-for="ManufactureId"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Цвет</label>
+        <table class="table">
+            <tr>
+                <th> Название цвета</th>
+                <th> Выбрано</th>
+            </tr>
+            @foreach (ColorTip color in ViewBag.Colors)
+            {
+                <tr>
+                    <td>@color.Color.Name</td>
+                    <td><input name="ColorsId" value="@color.Color.Id" asp-for="@color.IsChecked"/></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Высота</label>
+        <input type="text" name = "Height" class="form-control"/>
+        <span asp-validation-for="Height"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Количество колес</label>
+        <input type="text" name = "WheelBase" class="form-control"/>
+        <span asp-validation-for="WheelBase"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Количество дверей</label>
+        <input type="text" name = "Doors" class="form-control"/>
+        <span asp-validation-for="Doors"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Максимум пассажиров</label>
+        <input type="text" name = "Passengers" class="form-control"/>
+        <span asp-validation-for="Passengers"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Объем багажника</label>
+        <input type="text" name = "TrunkVolume" class="form-control"/>
+        <span asp-validation-for="TrunkVolume"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Масса</label>
+        <input type="text" name = "Weight" class="form-control"/>
+        <span asp-validation-for="Weight"></span>
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Ширина</label>
+        <input type="text" name = "Width" class="form-control"/>
+        <span asp-validation-for="Width"></span>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default" />
+    </div>
+</form>

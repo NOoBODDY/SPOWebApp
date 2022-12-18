@@ -1,0 +1,52 @@
+﻿@using System.Diagnostics
+@using CarShowRoom.DbModel
+@model CarShowRoom.DbModel.Complectation
+
+@{
+    ViewBag.Title = "Комплектация";
+    Layout = "_Layout";
+}
+
+<h2>Комплектация @Model.Name</h2>
+<div class="form-group">
+        <label  class="control-label">Название комплектации</label>
+        <label class="control-label">@Model.Name</label>
+    </div>
+<div class="form-group">
+    <label class="control-label">Название двигателя</label>
+    <label class="control-label">@Model.EngineName</label>
+</div>
+<div class="form-group">
+    <label class="control-label">Мощность двигателя</label>
+    <label class="control-label">@Model.EngineForce</label>
+</div>
+<div class="form-group">
+    <label class="control-label">Привод:</label>
+    @{
+        switch (Model.DriveType)
+        {
+            case DriveType.FrontWheel:
+                <label class="control-label">Передний привод</label>
+                break;
+            case DriveType.BackWheel:
+                <label class="control-label">Задний привод</label>
+                break;
+            case DriveType.FullWheel:
+                <label class="control-label">Полный привод</label>
+                break;
+        }
+    }
+</div>
+
+<div class="form-group">
+    <label class="control-label">Тип топлива</label>
+    <label class="control-label">@Model.FuelType.Name</label>
+</div>
+<div class="form-group">
+    <label class="control-label">Модель</label>
+    <label class="control-label"><a asp-controller="Products" asp-action="ShowCar" asp-route-carId="@Model.Car.Id">@Model.Car.ModelName</a></label>
+</div>
+<div class="form-group">
+    <label  class="control-label">Время поставки (дней)</label>
+    <label class="control-label">@Model.DeliveryTime</label>
+</div>

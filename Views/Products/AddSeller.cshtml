@@ -1,0 +1,23 @@
+﻿@model UserModel
+
+@{
+    ViewBag.Title = "Новый продавец";
+    Layout = "_Layout";
+}
+
+<h2>Добавить нового продавца</h2>
+<form asp-action="AddSeller" asp-controller="Products" method="post" asp-antiforgery="true">
+    <div class="form-group">
+        <label  class="control-label">Логин</label>
+        <input type="text" name="Login" class="form-control" />
+        <span asp-validation-for="Login"></span>
+    </div>
+    <div class="form-group">
+            <label  class="control-label">Пароль</label>
+            <input type="password" name="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-default" />
+    </div>
+</form>

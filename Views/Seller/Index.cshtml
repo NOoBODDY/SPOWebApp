@@ -1,0 +1,33 @@
+﻿@using CarShowRoom.DbModel
+
+@{
+    ViewBag.Title = "Страница продавца";
+    Layout = "_Layout";
+}
+
+<h2>Страница продавца</h2>
+<div class="form-group">
+    <label class="control-label">Все договоры: </label>
+    <table class="table">
+        @foreach (Contract contract in ViewBag.Contracts)
+        {
+            <tr>
+                <td><label>Договор №<a asp-controller="Seller" asp-action="ShowContract" asp-route-contractId="@contract.Id">@contract.Id</a></label></td>
+            </tr>
+        }
+    </table>
+    
+</div>
+<div class="form-group">
+    <label class="control-label">Все заказы: </label>
+    <table class="table">
+        @foreach (Order order in ViewBag.Orders)
+        {
+            <tr>
+                <td><label>Заказ №@order.Id по договору №<a asp-controller="Seller" asp-action="ShowContract" asp-route-contractId="@order.ContractId">@order.ContractId</a></label></td>
+            </tr>
+        }
+    </table>
+    
+</div>
+
